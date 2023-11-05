@@ -1,0 +1,5 @@
+.imagen-ajustada {
+    width: 40px; /* Ancho deseado */
+    height: auto; /* Altura automática para mantener la proporción */
+  }
+  
