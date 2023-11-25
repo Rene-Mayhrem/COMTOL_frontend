@@ -12,6 +12,7 @@ import { AuthContextProvider, UserAuth } from './context/AuthContext.jsx';
 function App() {
 
   // const { user } = UserAuth();
+  //? Creating state buttons
   const { contextTheme, setContextTheme } = useThemeContext();
   const [checked, setChecked] = useState(false);
   const [googleModal, setGoogleModal] = useState(false);
