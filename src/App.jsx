@@ -23,6 +23,7 @@ function App() {
   }
 
   return (
+    //? Adding comment to return function
     <AuthContextProvider>
       <div className={`app-container app-${contextTheme}`}>
         <div className="row">
