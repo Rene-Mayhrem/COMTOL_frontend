@@ -81,6 +81,14 @@
   border-top: 2px solid var(--clr-primary);
 }
 
+.btn-tag {
+  border: none;
+  width: auto;
+  overflow-y: auto;
+  overflow-x: auto;
+  margin: 5px;
+}
+
 /* dark mode */
 .filter-light {
   color: var(--clr-light-normal-text);

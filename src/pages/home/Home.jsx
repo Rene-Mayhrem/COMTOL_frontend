@@ -30,6 +30,14 @@ export default function Home() {
     console.log(events);
   }
 
+  //? Creates a random light color
+  const getRandomColor = () => {
+    const r = Math.floor(Math.random() * 128) + 128;
+    const g = Math.floor(Math.random() * 128) + 128;
+    const b = Math.floor(Math.random() * 128) + 128;
+    return `rgb(${r}, ${g}, ${b})`
+  }
+
 
   return (
     <div className="home-container">
@@ -54,7 +62,7 @@ export default function Home() {
         <div className="tag-section">
           {
             tags.map((tag, index) => (
-              <p key={index}>{tag.name}</p>
+              <button className="btn-tag" style={{backgroundColor: getRandomColor}} key={index}>{tag.name}</button>
             ))
           }
         </div>

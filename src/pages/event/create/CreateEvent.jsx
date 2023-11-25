@@ -7,31 +7,42 @@ const CreateEvent = () => {
   //? change to another component
   let navigate = useNavigate();
 
-  //? Create an empty event
-  const [event, setEvent] = useState({
-    title: "test",
-    description: "test description",
-    created_at: "2023-10-02",
-    date_event: "2023-10-02",
-    start_time: "09:00",
-    end_time: "11:00",
-    location: "toluca, mex",
-  });
+  //? get current date in format: yyyy-mm-dd
+  const currentDate = () => {
+    const getCurrentDate = new Date();
+    const year = getCurrentDate.getFullYear();
+    const month = getCurrentDate.getMonth() + 1;
+    const day = getCurrentDate.getDate();
+    return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`
+  }
 
-  //? Set new values from the form to the Event object in JSON format
-  const onInputChange = (e) => {
-    setEvent({ ...event, [e.target.name]: e.target.event});
-  };
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [tags, setTags] = useState("");
+  const [dateEvent, setDateEvent] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
+  const [location, setLocation] = useState("");
 
   const onSubmit = async (e) => {
     e.preventDefault();
     console.log(event);
     try {
-        console.log("Am I working?")
-        await axios.post("http://localhost:8080/events", {event});
-        navigate("/");
+      console.log("Am I working?");
+      const newEvent = {
+        title,
+        description,
+        created_at: currentDate,
+        date_event: dateEvent,
+        start_time: startTime,
+        end_time: endTime,
+        location,
+      };
+      console.log(newEvent);
+      await axios.post("http://localhost:8080/events", newEvent);
+      navigate("/");
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
   };
 
@@ -50,10 +61,8 @@ const CreateEvent = () => {
           placeholder="agrega el título"
           name="title"
           id="title"
-          onChange={
-            onInputChange
-          }
-          value={event.title}
+          onChange={(e) => {setTitle(e.target.value)}}
+          value={title}
         />
 
         <label htmlFor="description">Descripción</label>
@@ -63,10 +72,18 @@ const CreateEvent = () => {
           placeholder="agrega la descripción"
           name="description"
           id="description"
-          onChange={
-            onInputChange
-          }
-          value={event.description}
+          onChange={(e) => {setDescription(e.target.value)}}
+          value={description}
+        />
+
+        <label htmlFor="tags">Tags</label>
+        <input 
+          type="tags"
+          className="form-create"
+          placeholder="agrega las tags"
+          name="tags"
+          id="tags"
+          onChange={(e) => {setTags(e.target.value)}}
         />
 
         <label htmlFor="date_event">Fecha del evento</label>
@@ -75,10 +92,8 @@ const CreateEvent = () => {
           className="form-create"
           name="date_event"
           id="date_event"
-          onChange={
-            onInputChange
-          }
-          value={event.date_event}
+          onChange={(e) => {setDateEvent(e.target.value)}}
+          value={dateEvent}
         />
 
         <label htmlFor="start_time">Hora de inicio</label>
@@ -87,10 +102,8 @@ const CreateEvent = () => {
           className="form-create"
           name="start_time"
           id="start_time"
-          onChange={
-            onInputChange
-          }
-          value={event.start_time}
+          onChange={(e) => {setStartTime(e.target.value)}}
+          value={startTime}
         />
 
         <label htmlFor="end_time">Hora de término</label>
@@ -99,10 +112,8 @@ const CreateEvent = () => {
           className="form-create"
           name="end_time"
           id="end_time"
-          onChange={
-            onInputChange
-          }
-          value={event.end_time}
+          onChange={(e) => {setEndTime(e.target.value)}}
+          value={endTime}
         />
 
         <label htmlFor="location">Ubicación</label>
@@ -112,10 +123,8 @@ const CreateEvent = () => {
           placeholder="agrega la ubicación"
           name="location"
           id="location"
-          onChange={
-            onInputChange
-          }
-          value={event.location}
+          onChange={(e) => {setLocation(e.target.value)}}
+          value={location}
         />
 
         <button type="submit" className="btn-form-create-event">
