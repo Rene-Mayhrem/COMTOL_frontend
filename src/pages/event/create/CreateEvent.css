@@ -1,0 +1,20 @@
+.form-create-event {
+    width: 500px; /* Ancho del formulario */
+    margin: 0 auto; /* Centrar el formulario en la página */
+  }
+  
+  .form-create-event form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Estilos para los elementos del formulario */
+  .form-create {
+    margin-bottom: 10px; /* Espacio entre elementos */
+  }
+  
+  /* Estilo específico para el botón y el enlace */
+  .btn-form-create-event,
+  .btn-cancel-form-create-event {
+    /* Estilos para los botones */
+  }
