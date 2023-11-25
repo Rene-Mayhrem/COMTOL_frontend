@@ -16,10 +16,20 @@ export default function Home() {
     const result = await axios.get("http://localhost:8080/tags");
     setTags(result.data);
     console.log(result.data)
-    console.log(tags);
   }
 
-  
+  //? Consuming events endpoint
+  const [events, setEvents] = useState([]);
+  useEffect(() => {
+    loadEvents();
+  }, []);
+  const loadEvents = async () => {
+    const result = await axios.get("http://localhost:8080/events");
+    setEvents(result.data);
+    console.log(result.data);
+    console.log(events);
+  }
+
 
   return (
     <div className="home-container">
@@ -32,10 +42,13 @@ export default function Home() {
         </button>
       </div>
       <div className="magazine-section">
-        <MagazineContainer />
-        <MagazineContainer />
-        <MagazineContainer />
-        <MagazineContainer />
+        {/* <MagazineContainer /> */}
+        {
+          events.map((event, index) => {
+            console.log(event);
+            return <MagazineContainer key={index} event={event} />
+          })
+        }
       </div>
       <div className="menu-filter-section">
         <div className="tag-section">

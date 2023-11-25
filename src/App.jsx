@@ -8,6 +8,7 @@ import { useState } from 'react';
 import Magazine from './pages/magazine/Magazine.jsx';
 import GoogleModal from './feature/container/authentication/GoogleModal.js';
 import { AuthContextProvider, UserAuth } from './context/AuthContext.jsx';
+import CreateEvent from './pages/event/create/CreateEvent.jsx';
 
 function App() {
 
@@ -42,7 +43,7 @@ function App() {
             <Link to="/user-info" className={`btn btn-${contextTheme}-info`}>
               {/* <div> Welcome, {user?.displayName} </div> */}
             </Link>
-            <button className={`btn btn-${contextTheme}-create`}>Crear nota</button>
+            <Link className={`btn btn-${contextTheme}-create`} to="/create-event">Crear nota</Link>
             <button className={`btn btn-${contextTheme}-create`}>Crear noticia</button>
             <ReactSwitch
               className={`react-switch btn-mode ${contextTheme === 'dark' ? 'light' : 'dark'}`}
@@ -70,6 +71,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/user-info' element={<UserInfo />} />
             <Route path='/magazine' element={<Magazine />} />
+            <Route path='/create-event' element={<CreateEvent />}/>
           </Routes>
         </div>
       </div>

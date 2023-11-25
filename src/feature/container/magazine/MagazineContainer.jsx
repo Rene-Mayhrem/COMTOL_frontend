@@ -4,28 +4,15 @@ import "./MagazineContainer.css";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
-const MagazineContainer = () => {
+const MagazineContainer = ({event}) => {
   const { contextTheme } = useThemeContext();
-  const [events, setEvents] = useState([]);
-
-  useEffect(() => {
-    loadEvents();
-  }, []);
-
-  const loadEvents = async () => {
-    const result = await axios.get("http://localhost:8080/events");
-    console.log(result.data);
-    setEvents(result.data);
-  }
 
   return (
     <Link to="/magazine">
       <button className={`magazine-container magazine-${contextTheme}`}>
-       {
-        events.map((event, index) => {
-          <h1 key={index}>{event.title}</h1>
-        })
-       }
+       holaaa
+       <h1>{event.title}</h1>
+       <p>{event.id}</p>
       </button>
     </Link>
   );
