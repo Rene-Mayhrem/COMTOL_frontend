@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { useThemeContext } from "../../context/ThemeContext";
 import MagazineContainer from "../../feature/container/magazine/MagazineContainer";
+import { Axios } from "axios";
 
 export default function Home() {
   const { contextTheme } = useThemeContext();
+
+  //? initialize tags as empty
+  const [tags, setTags] = useState([]);
+
+
+  useEffect(() => {
+    loadTags();
+  }, []);
+
+  const loadTags  = async () => {
+    const result = await axios.get("http://localhost:8080/tags");
+    setTags(result.data);
+  }
+
   return (
     <div className="home-container">
       <div className="filter-section">
