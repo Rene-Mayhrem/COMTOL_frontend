@@ -1,0 +1,67 @@
+.page-magazine-container {
+    position: relative;
+    height: 100vh;
+    left: 0;
+    width: 100vw;
+    top: 0;
+    display: grid;
+    grid-template-columns: 0.1fr 4fr 1fr;
+    grid-template-rows: 1fr 1fr 6fr;
+    grid-template-areas:
+    "btn title info"
+    "btn magazine info"
+    "btn magazine reporter";
+    grid-gap: 1.5em;
+}
+
+.interaction-section {
+    grid-area: btn;
+}
+
+.title-section {
+    grid-area: title;
+    margin-top: 1.5em; 
+}
+
+.content-section {
+    grid-area: magazine;
+}
+
+.info-section {
+    grid-area: info;
+    margin-top: 1.5em;
+}
+
+.reporter-section {
+    grid-area: reporter;
+}
+
+.container-info {
+    transition: 0.5s ease-in-out;
+    margin-right: 1.5em ;
+}
+
+/* dark mode */
+.container-dark {
+    background-color: var(--clr-element-dark-container);
+}
+
+/* light mode  */
+.container-light {
+    background-color: var(--clr-container-gray);
+}
+
+@media screen and (max-width: 1500px) {
+    .page-magazine-container {
+        grid-template-columns: 0.1fr 4fr;
+        grid-template-rows: 1fr 6fr;
+    }
+
+    .info-section {
+        display: none;
+    }
+
+    .reporter-section{
+        display: none;
+    }
+}

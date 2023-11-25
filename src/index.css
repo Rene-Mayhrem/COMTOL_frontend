@@ -1,0 +1,25 @@
+/* GENERAL */
+:root {
+  /*  color */
+  --clr-primary: #f2be22;
+  --clr-primary-hover: #c59c1f;
+  --clr-btn-news: #f29727;
+  --clr-btn-succesful: #1c82ad;
+  --clr-btn-cancel: #ff0000;
+  /* ligth mode */
+  --clr-background-light: #f7f9f9;
+  --clr-container-gray: #d5dbdb;
+  --clr-ligth-normal-text: #000;
+  --clr-header-light: #273746;
+  --clr-element-light-container: #566573;
+  /* dark mode */
+  --clr-background-dark: #2b2b2b;
+  --clr-dark-search: #9ba4b5;
+  --clr-dark-normal-text: #fff;
+  --clr-header-dark-text: #9ba4b5;
+  --clr-element-dark-container: #423f3e;
+  /* size */
+  --border-radius: 0.5rem;
+  --font-normal-size: 16px;
+}
+

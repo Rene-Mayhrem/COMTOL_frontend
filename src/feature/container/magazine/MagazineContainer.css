@@ -1,0 +1,28 @@
+.magazine-container {
+    position: relative;
+    top: 0;
+    width: 96%;
+    height: 20vh;
+    margin: 1em;
+    transition: 0.5s ease-in-out;
+    left: 1.5%;
+    border: none;
+}
+
+/* dark mode */
+.magazine-dark {
+    background-color: var(--clr-element-dark-container);
+}
+
+.magazine-dark:hover {
+    background-color: #4d4a48;
+}
+
+/* light mode */
+.magazine-light {
+    background-color: var(--clr-container-gray);
+}
+
+.magazine-light:hover {
+    background-color: #c3c3c4;
+}
