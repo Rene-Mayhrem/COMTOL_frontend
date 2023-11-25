@@ -13,6 +13,7 @@
     border: none;
 }
 
+
 /* dark mode */
 .magazine-dark {
     background-color: var(--clr-element-dark-container);

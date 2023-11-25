@@ -18,28 +18,21 @@ const CreateEvent = () => {
     location: "toluca, mex",
   });
 
-  //? deconstruct event object
-  const {
-    title,
-    description,
-    date_event,
-    created_at,
-    created_by,
-    start_time,
-    end_time,
-    location,
-  } = event;
-
   //? Set new values from the form to the Event object in JSON format
   const onInputChange = (e) => {
-    setEvent({ ...event, [e.target.name]: e.target_value });
+    setEvent({ ...event, [e.target.name]: e.target.event});
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
     console.log(event);
-    await axios.post("http://localhost:8080/events", event);
-    navigate("/");
+    try {
+        console.log("Am I working?")
+        await axios.post("http://localhost:8080/events", {event});
+        navigate("/");
+    } catch (error) {
+        console.log(error);
+    }
   };
 
   return (
@@ -56,10 +49,11 @@ const CreateEvent = () => {
           className="form-create"
           placeholder="agrega el título"
           name="title"
-          onChange={(e) => {
-            onInputChange(e);
-          }}
-          value={title}
+          id="title"
+          onChange={
+            onInputChange
+          }
+          value={event.title}
         />
 
         <label htmlFor="description">Descripción</label>
@@ -68,10 +62,11 @@ const CreateEvent = () => {
           className="form-create"
           placeholder="agrega la descripción"
           name="description"
-          onChange={(e) => {
-            onInputChange(e);
-          }}
-          value={description}
+          id="description"
+          onChange={
+            onInputChange
+          }
+          value={event.description}
         />
 
         <label htmlFor="date_event">Fecha del evento</label>
@@ -79,10 +74,11 @@ const CreateEvent = () => {
           type="date"
           className="form-create"
           name="date_event"
-          onChange={(e) => {
-            onInputChange(e);
-          }}
-          value={date_event}
+          id="date_event"
+          onChange={
+            onInputChange
+          }
+          value={event.date_event}
         />
 
         <label htmlFor="start_time">Hora de inicio</label>
@@ -90,10 +86,11 @@ const CreateEvent = () => {
           type="time"
           className="form-create"
           name="start_time"
-          onChange={(e) => {
-            onInputChange(e);
-          }}
-          value={start_time}
+          id="start_time"
+          onChange={
+            onInputChange
+          }
+          value={event.start_time}
         />
 
         <label htmlFor="end_time">Hora de término</label>
@@ -101,10 +98,11 @@ const CreateEvent = () => {
           type="time"
           className="form-create"
           name="end_time"
-          onChange={(e) => {
-            onInputChange(e);
-          }}
-          value={end_time}
+          id="end_time"
+          onChange={
+            onInputChange
+          }
+          value={event.end_time}
         />
 
         <label htmlFor="location">Ubicación</label>
@@ -113,10 +111,11 @@ const CreateEvent = () => {
           className="form-create"
           placeholder="agrega la ubicación"
           name="location"
-          onChange={(e) => {
-            onInputChange(e);
-          }}
-          value={location}
+          id="location"
+          onChange={
+            onInputChange
+          }
+          value={event.location}
         />
 
         <button type="submit" className="btn-form-create-event">
